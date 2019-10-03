@@ -1,0 +1,197 @@
+#include "stdafx.h"
+#include <iostream>
+#include <string>
+using namespace std;
+char guess;
+int total;
+
+class Question {
+private:
+	string Question_text;
+	string answer_1;
+	string answer_2;
+	string answer_3;
+	string answer_4;
+	string answer_5;
+	char Correct_answer;
+	int Question_score;
+public:
+	void setValues(string, string, string, string, string, string, char, int);
+	void askQuestions();
+};
+void Question::setValues(string q, string a1, string a2, string a3, string a4, string a5, char ca, int pa) {
+	Question_text = q;
+	answer_1 = a1;
+	answer_2 = a2;
+	answer_3 = a3;
+	answer_4 = a4;
+	answer_5 = a5;
+	Correct_answer = ca;
+	Question_score = pa;
+}
+void Question::askQuestions() {
+	cout << "\n";
+	cout << Question_text << endl;
+	cout << "a." << answer_1 << endl;
+	cout << "b." << answer_2 << endl;
+	cout << "c." << answer_3 << endl;
+	cout << "d." << answer_4 << endl;
+	cout << "e." << answer_5 << endl;
+	cout << "What is your answer?" << endl;
+	cin >> guess;
+	if (guess == Correct_answer) {
+		cout << endl;
+		cout << "Correct!" << endl;
+		total = total + Question_score;
+		cout << endl;
+		cout << "Press enter to continue." << endl;
+		cin.get();
+		cin.ignore();
+	}
+	else {
+		cout << endl;
+		cout << "Sorry, you are wrong..." << endl;
+		cout << "The correct answer is " << Correct_answer << "." << endl;
+		cout << "Press enter to continue." << endl;
+		cin.get();
+		cin.ignore();
+	}
+}
+
+
+int main()
+{   
+	//int R;
+	string respond;
+	cout << "Are you ready to start the quiz? Yes/no?" << endl;
+	cin >> respond;
+	if (respond == "Yes" || respond == "yes") {
+		cout << endl;
+		cout << "Good luck!" << endl;
+		cout << "Press enter to continue." << endl;
+		cin.get();
+		cin.ignore();
+	}
+	else {
+		cout << endl;
+		cout << "Goodbay!" << endl;
+		cin.get();
+		cin.ignore();
+		return 0;
+	}
+	Question q1;
+	Question q2;
+	Question q3;
+	Question q4;
+	Question q5;
+	Question q6;
+	Question q7;
+	Question q8;
+	Question q9;
+	Question q10;
+	q1.setValues("1.What is the deepest lake in the world?",
+		"Baikal",
+		"Great Bear Lake",
+		"Lake Michigan",
+		"Lake Victoria",
+		"Lake Tahoe",
+		'a',
+		5);
+	q2.setValues("2.What is the highest place on Earth?",
+		"Mount Rainier",
+		"Mount Everest",
+		"Mount Kinabalu",
+		"Mount Damavand",
+		"Nanga Parbat",
+		'b',
+		5);
+	q3.setValues("3.Which of the planets is closest to the Sun?",
+		"Jupiter",
+		"Venus",
+		"Saturn",
+		"Mercury",
+		"Neptun",
+		'd',
+		5);
+	q4.setValues("4.When did the Second World War end?",
+	    "1944",
+		"1945",
+		"1942",
+		"1943",
+		"1946",
+		'b',
+		5);
+	q5.setValues("5.Where is the tallest peak in Europe?",
+		"France",
+		"Italy",
+		"Spain",
+		"Austria",
+		"Russia",
+		'e',
+		5);
+	q6.setValues("6.What is the most spoken Language in the World?",
+		"English",
+		"Spanish",
+		"Chinese",
+		"Hindi",
+		"Arabic",
+		'c',
+		5);
+	q7.setValues("7.What is the poorest country in the World?",
+		"Central African Republic",
+		"burundi",
+		"Liberia",
+		"Niger",
+		"Mozambique",
+		'a',
+		5);
+	q8.setValues("8.What is the richest country in the World?",
+		"Luxemburg",
+		"Kuwait",
+		"Qatar",
+		"Ireland",
+		"Norway",
+		'c',
+		5);
+	q9.setValues("9.Who have the largest army in the World?",
+		"China",
+		"United States",
+		"Russia",
+		"North Korea",
+		"India",
+		'a',
+		5);
+	q10.setValues("10.Where is the hottest place on Earth?",
+		"Arabian Desert",
+		"Sahara",
+		"Gobi Desert",
+		"Kalahari Desert",
+		"Death Valley",
+		'e',
+		5);
+	q1.askQuestions();
+	q2.askQuestions();
+	q3.askQuestions();
+	q4.askQuestions();
+	q5.askQuestions();
+	q6.askQuestions();
+	q7.askQuestions();
+	q8.askQuestions();
+	q9.askQuestions();
+	q10.askQuestions();
+	cout << "Your total score is " << total << " out of 50." << endl;
+	if (total > 25) {
+		cout << "You pass!" << endl;
+		cin.get();
+		cin.ignore();
+		return 0;
+	}
+	else {
+		cout << endl;
+		cout << "You failed... Sorry better luck next time." << endl;
+	}
+	cin.get();
+	cin.ignore();
+	system("pause");
+    return 0;
+}
